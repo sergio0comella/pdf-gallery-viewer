@@ -1,0 +1,80 @@
+.pdf-gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.pdf-gallery-item {
+    width: 150px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.pdf-gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.pdf-icon {
+    width: 80px;
+    /* Dimensione fissa per l'immagine */
+    height: 100px;
+    /* Dimensione fissa per l'immagine */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.pdf-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Mantiene il rapporto di aspetto */
+}
+
+.pdf-view-link {
+    color: #007bff;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 5px 0;
+    display: block;
+}
+
+.pdf-view-link:hover {
+    text-decoration: underline;
+}
+
+.pdf-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: auto;
+    /* Spinge il titolo verso il basso */
+    text-align: center;
+}
+
+/* Media query per schermi più piccoli: un elemento sotto l'altro */
+@media (max-width: 600px) {
+    .pdf-gallery-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pdf-gallery-item {
+        width: 100%;
+        max-width: 200px;
+        /* Larghezza massima per ogni elemento */
+        margin-bottom: 15px;
+    }
+}

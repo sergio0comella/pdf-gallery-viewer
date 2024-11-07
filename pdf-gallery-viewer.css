@@ -1,0 +1,68 @@
+/* Container della galleria per layout responsive */
+.pdf-gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centra gli elementi */
+    gap: 20px;
+    /* Spazio tra gli elementi */
+    padding: 10px;
+}
+
+/* Stile per ogni singolo elemento PDF nella galleria */
+.pdf-gallery-item {
+    width: 150px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease;
+    /* Aggiunge un effetto hover */
+}
+
+.pdf-gallery-item:hover {
+    transform: scale(1.05);
+    /* Effetto ingrandimento al passaggio del mouse */
+}
+
+.pdf-icon img {
+    width: 100%;
+    height: auto;
+    max-width: 80px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.pdf-view-link {
+    color: #007bff;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 5px;
+    display: block;
+}
+
+.pdf-view-link:hover {
+    text-decoration: underline;
+}
+
+.pdf-title {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Media query per rendere il layout più flessibile su dispositivi piccoli */
+@media (max-width: 600px) {
+    .pdf-gallery-item {
+        width: 100px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .pdf-gallery-item {
+        width: 120px;
+    }
+}
