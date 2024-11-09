@@ -3,7 +3,7 @@
 Plugin Name: PDF Gallery Viewer
 Description: A WordPress plugin that creates a responsive PDF gallery with thumbnail previews.
 Version: 1.0.0
-Author: Panezio
+Author: <a href="https://sergiocomella.it">Panezio</a>
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -19,7 +19,9 @@ function pdf_gallery_generate_thumbnail($pdf_url)
     $upload_dir = wp_upload_dir();
     $pdf_path = str_replace(trailingslashit(site_url()), ABSPATH, $pdf_url);
     $image_path = $upload_dir['path'] . '/' . md5($pdf_url) . '.jpg';
+    $default_icon = plugin_dir_url(__FILE__) . 'pdf-icon.png';
 
+    // Generate the thumbnail if it doesn't exist and Imagick is available
     if (!file_exists($image_path) && class_exists('Imagick')) {
         try {
             $imagick = new Imagick();
@@ -30,11 +32,13 @@ function pdf_gallery_generate_thumbnail($pdf_url)
             $imagick->clear();
             $imagick->destroy();
         } catch (Exception $e) {
-            return plugin_dir_url(__FILE__) . 'pdf-icon.png';
+            // Return default PDF icon if thumbnail generation fails
+            return $default_icon;
         }
     }
 
-    return file_exists($image_path) ? $upload_dir['url'] . '/' . basename($image_path) : plugin_dir_url(__FILE__) . 'pdf-icon.png';
+    // Return generated thumbnail if it exists, otherwise return the default icon
+    return file_exists($image_path) ? $upload_dir['url'] . '/' . basename($image_path) : $default_icon;
 }
 
 function pdf_gallery_shortcode($atts)
@@ -58,8 +62,8 @@ function pdf_gallery_shortcode($atts)
                 <img src="' . esc_url($thumbnail_url) . '" alt="PDF Preview">
             </div>
             <div class="pdf-info">
-                <a href="' . esc_url($atts['url']) . '" target="_blank" class="pdf-view-link">"'
-                . esc_html($atts['text_link']). '"</a>
+                <a href="' . esc_url($atts['url']) . '" target="_blank" class="pdf-view-link">'
+        . esc_html($atts['text_link']) . '</a>
                 <div class="pdf-title">' . esc_html($atts['title']) . '</div>
             </div>
         </div>
