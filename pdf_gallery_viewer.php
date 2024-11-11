@@ -8,9 +8,12 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+// Function to enqueue style only if shortcode is present
 function pdf_gallery_enqueue_styles()
 {
-    wp_enqueue_style('pdf-gallery-style', plugin_dir_url(__FILE__) . 'pdf-gallery-viewer.css');
+    if (has_shortcode(get_post()->post_content, 'pdf_gallery')) {
+        wp_enqueue_style('pdf-gallery-style', plugin_dir_url(__FILE__) . 'pdf-gallery-viewer.css', array(), filemtime(plugin_dir_path(__FILE__) . 'pdf-gallery-viewer.css'));
+    }
 }
 add_action('wp_enqueue_scripts', 'pdf_gallery_enqueue_styles');
 

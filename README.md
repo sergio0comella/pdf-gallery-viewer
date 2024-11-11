@@ -1,8 +1,7 @@
 # PDF Gallery Viewer
 
-**Contributors:** panezio  
 **Donate link:** [https://ko-fi.com/panezio](https://ko-fi.com/panezio)  
-**Tags:** business, directory  
+**Tags:** pdf, gallery, responsive  
 **Requires at least:** 6.6  
 **Tested up to:** 6.6  
 **Stable tag:** 1.0.0  
